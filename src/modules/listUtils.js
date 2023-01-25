@@ -55,12 +55,14 @@ export const editTask = (e, toDoListArray) => {
   const taskText = clickedTask.value;
 
   clickedTask.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter' && clickedTask.value !== '') {
-      const taskIndex = toDoListArray.findIndex((task) => task.task === taskText);
-      toDoListArray[taskIndex].task = clickedTask.value;
-      clickedTask.disabled = true;
-      updateLocalStorage(toDoListArray);
-      renderToDoList(toDoListArray);
+    if (e.key === 'Enter') {
+      if (clickedTask.value) {
+        const taskIndex = toDoListArray.findIndex((task) => task.task === taskText);
+        toDoListArray[taskIndex].task = clickedTask.value;
+        clickedTask.disabled = true;
+        updateLocalStorage(toDoListArray);
+        renderToDoList(toDoListArray);
+      }
     }
   });
 };

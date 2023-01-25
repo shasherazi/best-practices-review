@@ -15,16 +15,18 @@ const clearCompletedBtn = document.querySelector('.todo-list-clear-btn');
 const addTaskBtn = document.querySelector('.task-add-btn');
 
 input.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter' && input.value !== '') {
-    addTask(toDoTasks, input.value);
-    input.value = '';
-    updateLocalStorage(toDoTasks);
-    renderToDoList(toDoTasks);
+  if (e.key === 'Enter') {
+    if (input.value) {
+      addTask(toDoTasks, input.value);
+      input.value = '';
+      updateLocalStorage(toDoTasks);
+      renderToDoList(toDoTasks);
+    }
   }
 });
 
 addTaskBtn.addEventListener('click', () => {
-  if (input.value !== '') {
+  if (input.value) {
     addTask(toDoTasks, input.value);
     input.value = '';
     updateLocalStorage(toDoTasks);
